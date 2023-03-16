@@ -10,7 +10,7 @@ from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import Flask, redirect, render_template, session, url_for
-
+from flask_cors import CORS
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
 ENV_FILE = find_dotenv()
@@ -20,6 +20,7 @@ if ENV_FILE:
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = env.get("APP_SECRET_KEY")
 
 # 👆 We're continuing from the steps above. Append this to your server.py file.
@@ -220,7 +221,7 @@ def home():
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
 
-@app.route('/data')
+@app.route('/data', methods=['GET'])
 def get_articles():
     delete_duplicates()  # delete any duplicates in database before displaying likes
 
@@ -247,12 +248,16 @@ def get_articles():
             'title': response_dict['title'],
             'urlLink': response_dict.get('url', 0),
             'id': response_dict.get('id', 0),
-            'likes': count  # retrieve likes from query
+            'likes': count,  # retrieve likes from query
+            'author': response_dict['by'],
+            'type': response_dict['type']
         }
 
         submission_dicts.append(submission_dict)
     # Returning an api for showing in  reactjs
-    return submission_dicts
+    response = json.dumps(submission_dicts)
+
+    return response
 
 
 def delete_duplicates():

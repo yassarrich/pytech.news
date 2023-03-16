@@ -1,50 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from "axios";
+import ArticleTimeline from './ArticleTimeline';
 
 function Stories() {
 
-  const [profileData, setProfileData] = useState(null)
-
-  function getData() {
-    axios({
-      method: "GET",
-      url:"/data",
-    })
-    .then((response) => {
-      const res =response.data
-    
-    for (let i =0; i < 20; i++){
-      setProfileData(
-        ({
-        profile_name: res[i].title,
-        url: res[i].urlLink,
-        likes: res[i].likes,
-        id: res[i].id
-        }),
-        )
-    }
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-    } )}
-    console.log(profileData)
+  let profileData = []
   
+const [articles, getArticles] = useState([]);
+const baseUrl = 'http://127.0.0.1:5000/data';
+
+useEffect(() => {
+  getAllArticles();
+}, []);
+
+const getAllArticles = () => {
+  axios.get(baseUrl).then((response) => {
+    const allArticles = response.data;
+
+    getArticles(allArticles)
+
+  }).catch(error => console.error(`Error: ${error}`));
+} 
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* new line start*/}
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {profileData && <div>
-              <p>Profile name: {profileData.profile_name}</p>
-              <p>url: {profileData.url}</p>
-              <p>Likes: {profileData.likes}</p>
-            </div>
-        }
-         {/* end of new line */}
-      </header>
+    <div className="flex flex-wrap -m-4">
+      <ArticleTimeline articles={articles}/>
     </div>
   );
 }

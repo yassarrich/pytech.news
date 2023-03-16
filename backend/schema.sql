@@ -10,6 +10,9 @@ CREATE TABLE articles (
 	nickname TEXT NOT NULL, 
 	name TEXT NOT NULL, 
 	artTitle TEXT NOT NULL, 
+	artAuth TEXT NOT NULL,
+	artType TEXT NOT NULL,
 	artId INTEGER NOT NULL, 
 	artVal INTEGER NOT NULL
+	
 );
