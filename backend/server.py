@@ -67,10 +67,10 @@ def callback():
                 [sess['userinfo']['nickname'], sess['userinfo']['name']])
     connection.commit()
 
-    return redirect("/")
+    return redirect("http://localhost:3000/profile")
 
 
-@app.route("/logout")
+@app.route("/logout", methods=['POST', 'GET'])
 def logout():
     session.clear()
     return redirect(
@@ -78,7 +78,7 @@ def logout():
         + "/v2/logout?"
         + urlencode(
             {
-                "returnTo": url_for("home", _external=True),
+                "returnTo": url_for("http://localhost:3000/", _external=True),
                 "client_id": env.get("AUTH0_CLIENT_ID"),
             },
             quote_via=quote_plus,

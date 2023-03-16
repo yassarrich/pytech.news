@@ -22,9 +22,14 @@ const getAllArticles = () => {
   }).catch(error => console.error(`Error: ${error}`));
 } 
   return (
-    <div className="flex flex-wrap -m-4">
+    <>
+    <div>
+    <h1 className='text-center font-semibold mt-4 border-3'>Top Stories</h1>
+    </div>
+    <div className="flex flex-wrap mt-4 mb-4">
       <ArticleTimeline articles={articles}/>
     </div>
+    </>
   );
 }
 

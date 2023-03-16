@@ -1,21 +1,23 @@
+import React from 'react'
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-
 const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Likes', href: '#likes', current: false },
+    { name: 'Home', href: '/', current: true },
+    { name: 'Likes', href: '#likes', current: false },
+    
   
-
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function Header() {
+  ]
+  
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+  
+const TempNav = () => {
   return (
+    <>
     <Disclosure as="nav" className="bg-black">
       {({ open }) => (
         <>
@@ -92,10 +94,10 @@ export default function Header() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/profile"
+                            href="http://127.0.0.1:5000/login"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Login
                           </a>
                           
                         )}
@@ -103,10 +105,10 @@ export default function Header() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/logout"
+                            href="http://127.0.0.1:5000/logout"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Logout
+                            Settings
                           </a>
                           
                         )}
@@ -139,5 +141,8 @@ export default function Header() {
         </>
       )}
     </Disclosure>
+    </>
   )
 }
+
+export default TempNav

@@ -2,30 +2,30 @@ import React from "react"
 
 export default function Footer() {
     return(
-      <footer class="bg-neutral-200 text-center text-white dark:bg-neutral-600">
-        <div class="container p-6 text-neutral-800 dark:text-neutral-200">
-            <div class="grid gap-4 lg:grid-cols-2">
-              <div class="">
+      <footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
+        <div className="container p-6 text-neutral-800 dark:text-neutral-200">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="">
                 
               </div>
             </div>
           </div>
-      <div class="container">
-        <div class="mb-9 flex justify-center">
-          <a href="#!" class="mr-4 text-neutral-800 dark:text-neutral-200">
+      <div className="container">
+        <div className="mb-9 flex justify-center">
+          <a href="#!" className="mr-4 text-neutral-800 dark:text-neutral-200">
             <svg
               xmlns=""
-              class="h-4 w-4"
+              className="h-4 w-4"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path
                 d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
             </svg>
           </a>
-          <a href="" class="text-neutral-800 dark:text-neutral-200">
+          <a href="" className="text-neutral-800 dark:text-neutral-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
+              className="h-4 w-4"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path
@@ -36,10 +36,10 @@ export default function Footer() {
       </div>
     
       <div
-        class="bg-neutral-300 p-4 text-right text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">    
+        className="bg-neutral-300 p-4 text-right text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">    
         © 2023 Copyright:
         <a
-          class="text-neutral-800 dark:text-neutral-400"
+          className="text-neutral-800 dark:text-neutral-400"
           href=""
           > Yassar Rich</a
         >
