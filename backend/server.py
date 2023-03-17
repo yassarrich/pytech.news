@@ -40,7 +40,7 @@ oauth.register(
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
 
-@app.route("/login")
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     return oauth.auth0.authorize_redirect(
         redirect_uri=url_for("callback", _external=True)
@@ -67,7 +67,7 @@ def callback():
                 [sess['userinfo']['nickname'], sess['userinfo']['name']])
     connection.commit()
 
-    return redirect("http://localhost:3000/profile")
+    return redirect("http://localhost:3000/account")
 
 
 @app.route("/logout", methods=['POST', 'GET'])
@@ -78,7 +78,7 @@ def logout():
         + "/v2/logout?"
         + urlencode(
             {
-                "returnTo": url_for("http://localhost:3000/", _external=True),
+                "returnTo": url_for("home", _external=True),
                 "client_id": env.get("AUTH0_CLIENT_ID"),
             },
             quote_via=quote_plus,
@@ -105,7 +105,7 @@ def admin_view():
     return render_template("adminView.html", session=session.get('user'), articles=likes)
 
 
-@app.route("/profile")
+@app.route("/profile", methods=['POST', 'GET'])
 def profile():
     """
     loads the user profile page which contains their name and email
@@ -119,7 +119,14 @@ def profile():
     for row in rows:
         arts.append(row)
     print(arts)
-    return arts
+    return redirect(url_for('likedPost', message=arts))
+
+
+@app.route("/likedPost", methods=["GET", "POST"])
+def likedPost():
+
+    return redirect("http://localhost:3000/likedPost")
+
 #   return render_template("profile.html", session=session.get('user'), articles=arts)
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
@@ -215,7 +222,7 @@ def home():
 
         submission_dicts.append(submission_dict)
 
-    return submission_dicts
+    return redirect("http://localhost:3000/")
 #    return render_template("index.html", session=session.get('user'), sub=submission_dicts, PAGE=0)
 
 # 👆 We're continuing from the steps above. Append this to your server.py file.
@@ -277,7 +284,6 @@ def delete_duplicates():
                 HAVING COUNT(*) > 1;")
 
     rows = cur.fetchall()
-    print("duplicates collected: \n")
     dupes = []  # list of duplicates
     if len(rows) > 0:  # if we have dupes
         for row in rows:

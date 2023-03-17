@@ -1,23 +1,19 @@
-import React from 'react'
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-    { name: 'Home', href: '/', current: true },
-    { name: 'Likes', href: '#likes', current: false },
-    
-  
-  ]
-  
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
-  
-const TempNav = () => {
+  { name: 'Home', href: '', current: true },
+  { name: 'Likes', href: 'http://127.0.0.1:5000/profile', current: false },
+  { name: 'Logout', href: 'http://127.0.0.1:5000/logout', current: false }
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function Header() {
   return (
-    <>
     <Disclosure as="nav" className="bg-black">
       {({ open }) => (
         <>
@@ -39,13 +35,13 @@ const TempNav = () => {
                   <img
                     className="block h-8 w-auto lg:hidden rounded-lg"
                     src="https://images.unsplash.com/photo-1678946462808-292d73a31a5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1391&q=80"
-                    alt="Pytech.news"
+                    alt="Your Company"
                   />
                   
                   <img
-                    className="hidden h-8 w-auto lg:block rounded-full"
+                    className="hidden h-8 w-auto lg:block"
                     src="https://images.unsplash.com/photo-1678946462808-292d73a31a5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1391&q=80"
-                    alt="Pytech.news"
+                    alt="Your Company"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -66,57 +62,7 @@ const TempNav = () => {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRMVVzolQkwL4kK9HJ9tQBKr6SdnkX882mMy8ZXZeiCQkMvQw6iB7YqeTKTd6AabKs11E&usqp=CAU"
-                        alt=""
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="http://127.0.0.1:5000/login"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Login
-                          </a>
-                          
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="http://127.0.0.1:5000/logout"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                          
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
+  
             </div>
           </div>
 
@@ -141,8 +87,5 @@ const TempNav = () => {
         </>
       )}
     </Disclosure>
-    </>
   )
 }
-
-export default TempNav

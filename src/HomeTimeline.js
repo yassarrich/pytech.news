@@ -3,11 +3,13 @@ import React from 'react'
 export default function HomeTimeline(props) {
 
 const StoryBoards = (props) => {
-    const {menu, articles} = props
-    if(articles.length > 0 && articles.length < 3){
+    const {menu, articles} = props;
+    var temp = articles.slice(0,3);
+    console.log("check");
+    if(temp.length > 0){
         return (
-
-            articles.map((articles, index) => {
+            
+            temp.map((articles, index) => {
                 return(
                     <>
 

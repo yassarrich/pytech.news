@@ -1,33 +1,39 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import ArticleTimeline from './ArticleTimeline.js';
+import LikedPost from './LikedPost.jsx'
 import axios from 'axios';
-import Header from './Header.js';
+import Header from './ProfileHeader.jsx';
 
 const ProfileHome = () => {
+
   const [loading, setLoading]= useState(false);
-  
-  let profileData = []
-  
-const [articles, getArticles] = useState([]);
-const baseUrl = 'http://127.0.0.1:5000/data';
+  const [articles, getArticles] = useState([]);
+  const baseUrl = 'http://127.0.0.1:5000/data';
 
-useEffect(() => {
-  getAllArticles();
-}, []);
+  useEffect(() => {
+    getAllArticles();
+  }, []);
 
-const getAllArticles = () => {
-  axios.get(baseUrl).then((response) => {
-    const allArticles = response.data;
+  const getAllArticles = () => {
+    
+    axios.get(baseUrl).then((response) => {
+      const allArticles = response.data;
+      getArticles(allArticles)
 
-    getArticles(allArticles)
-
-  }).catch(error => console.error(`Error: ${error}`));
-} 
+    }).catch(error => console.error(`Error: ${error}`));
+  } 
 
   return (
     <>
+        
 
+    <Header/>
+    <Routes>
+          <Route path="/likedPost" element={<LikedPost />}/>
+    </Routes>
+    <main className='sm:px-8 px-4 py-8  bg-[#f9fafe] min-h-[calc(100vh-73px)]'>
     <section className="max-w-7xl mx-auto">
       <div>
         <h1 className="font-extrabold text-[#222328] text-[32px]">All Stories</h1>
@@ -52,6 +58,7 @@ const getAllArticles = () => {
         )}
       </div>
     </section>
+    </main>
     </>
   )
 }
