@@ -124,7 +124,6 @@ def profile():
 
 @app.route("/likedPost", methods=["GET", "POST"])
 def likedPost():
-
     return redirect("http://localhost:3000/likedPost")
 
 #   return render_template("profile.html", session=session.get('user'), articles=arts)
@@ -265,6 +264,38 @@ def get_articles():
     response = json.dumps(submission_dicts)
 
     return response
+
+
+@app.route('/likeData', methods=['GET'])
+def get_likeData():
+    """
+    loads the user profile page which contains their name and email
+    """
+    conn = sqlite3.connect('database.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM articles")
+    rows = cur.fetchall()
+    arts = []
+# appends the row to the end of a list of likes in order to return the relevant info
+    for row in rows:
+        arts.append(row)
+
+    likes = json.dumps(arts)
+
+    return likes
+
+
+@app.route("/add", methods=["POST"], strict_slashes=False)
+def add_likes():
+    title = request.json['title']
+    body = request.json['body']
+
+    article = Articles(
+        title=title,
+        body=body
+    )
+
+    return 0
 
 
 def delete_duplicates():

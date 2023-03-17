@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Home', href: '', current: true },
+  { name: 'Home', href: '/account', current: true },
   { name: 'Likes', href: 'http://127.0.0.1:5000/profile', current: false },
   { name: 'Logout', href: 'http://127.0.0.1:5000/logout', current: false }
 ]

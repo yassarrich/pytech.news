@@ -2,11 +2,11 @@ import React from "react"
 
 export default function Footer() {
     return(
-      <footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
+      <footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600 ">
         <div className="container p-6 text-neutral-800 dark:text-neutral-200">
             <div className="grid gap-4 lg:grid-cols-2">
               <div className="">
-                
+                <p>Hello!</p>
               </div>
             </div>
           </div>

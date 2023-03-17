@@ -1,18 +1,20 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import {Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import ArticleTimeline from './ArticleTimeline.jsx';
+import LikedPost from './LikedPost.jsx'
 import axios from 'axios';
-import ProfileHeader from './ProfileHeader.jsx';
-import Likes from './Likes.jsx'
-import LikeButton from './LikeButton.jsx';
-import Home from './Home.jsx';
+import Header from './ProfileHeader.jsx';
+import LikesTimeline from './LikesTimeline.js';
 
-const ProfileHome = () => {
+
+
+
+const LikesHome = () => {
 
   const [loading, setLoading]= useState(false);
   const [articles, getArticles] = useState([]);
-  const baseUrl = 'http://127.0.0.1:5000/data';
+  const baseUrl = 'http://127.0.0.1:5000/likeData';
 
   useEffect(() => {
     getAllArticles();
@@ -29,12 +31,7 @@ const ProfileHome = () => {
 
   return (
     <>
-        
-
-    <ProfileHeader/>
-    <Routes>
-          <Route path="/likedPost" element={<Likes />}/>
-    </Routes>
+    <Header/>
     <main className='sm:px-8 px-4 py-8  bg-[#f9fafe] min-h-[calc(100vh-73px)]'>
     <section className="max-w-7xl mx-auto">
       <div>
@@ -44,8 +41,6 @@ const ProfileHome = () => {
         
       </div>
 
-      
-
       <div className="mt-10">
         {loading ? (
           <div className="flex justify-center items-center">
@@ -54,8 +49,8 @@ const ProfileHome = () => {
         ) : (
           <>
             <div class="flex flex-wrap -m-4">
-            <ArticleTimeline articles={articles}/>
-            <LikeButton/>
+            <LikesTimeline articles={articles}/>
+
             </div>
           </>
         )}
@@ -66,4 +61,4 @@ const ProfileHome = () => {
   )
 }
 
-export default ProfileHome
+export default LikesHome

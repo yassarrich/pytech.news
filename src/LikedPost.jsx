@@ -5,7 +5,6 @@ const LikedPost = () => {
   return (
 
     <>
-    
     <div><p>LikedPost</p></div>
     </>
   )

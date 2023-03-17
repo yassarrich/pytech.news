@@ -1,4 +1,5 @@
 import React from 'react'
+import LikeButton from './LikeButton'
 
 export default function ArticleTimeline(props) {
 
@@ -9,7 +10,7 @@ const StoryBoards = (props) => {
 
             articles.map((articles, index) => {
                 return(
-            
+                    <>
                 <div className="xl:w-1/3 md:w-1/2 p-4">
                     <div className="bg-white  p-6 rounded-lg border">
                         <img className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src={`https://picsum.photos/seed/${articles.id}/300/200`} alt="Image Size 720x400"/>
@@ -19,10 +20,14 @@ const StoryBoards = (props) => {
                         </h2>
                         <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font mb-4">Author: {articles.author}</h3>
 
-                        <p className="leading-relaxed text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a urna elementum, tempor leo id, lobortis nisi. Morbi ullamcorper luctus ante, id pellentesque neque tempor sed.</p>
+                        <p className="leading-relaxed text-base pb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a urna elementum, tempor leo id, lobortis nisi. Morbi ullamcorper luctus ante, id pellentesque neque tempor sed.</p>
+
+                        <LikeButton likes={articles.likes} /> 
                     </div>
+                  
                 </div>
-                 
+                
+                 </>
 
                     
                 )
