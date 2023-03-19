@@ -11,6 +11,7 @@ from authlib.integrations.flask_client import OAuth
 from dotenv import find_dotenv, load_dotenv
 from flask import Flask, redirect, render_template, session, url_for
 from flask_cors import CORS
+from flask import request
 # 👆 We're continuing from the steps above. Append this to your server.py file.
 
 ENV_FILE = find_dotenv()
@@ -254,7 +255,8 @@ def get_articles():
             'title': response_dict['title'],
             'urlLink': response_dict.get('url', 0),
             'id': response_dict.get('id', 0),
-            'likes': count,  # retrieve likes from query
+            'likes': response_dict.get('score'),
+            #            'likes': count,  # retrieve likes from query
             'author': response_dict['by'],
             'type': response_dict['type']
         }
@@ -285,16 +287,39 @@ def get_likeData():
     return likes
 
 
-@app.route("/add", methods=["POST"], strict_slashes=False)
+@app.route("/add", methods=["POST"])
 def add_likes():
-    title = request.json['title']
-    body = request.json['body']
+    data = request.get_json()
 
-    article = Articles(
-        title=title,
-        body=body
-    )
+    title = data.get('title')
+    likes = data.get('likes')
+    # Do something with the data...
 
+    return 'Success'
+
+
+def updateLike(val, title=None):
+    """
+    Make a selection from the database and check that the title exist in the database, If so, update the amount of likes in the database for the article
+    """
+    conn = sqlite3.connect('database.db')
+    cur = conn.cursor()
+    if val == "artVal":  # when requesting like or dislike
+        # query likes
+        cur.execute("SELECT " + val + ",artTitle FROM articles WHERE artVal=1 AND artTitle=?",
+                    (title, ))
+        rows1 = cur.fetchall()  # place like tuples in list
+        cur.execute("SELECT " + val + ",artTitle FROM articles WHERE artVal=-1 AND artTitle=?",
+                    (title, ))
+        rows2 = cur.fetchall()
+        total = 0
+        for row in rows1:
+            print(row)
+            total = total + 1  # add 1 to total likes if in rows1 list
+        for row in rows2:
+            print(row)
+            total = total - 1  # subtract 1 from total if in rows2
+        return total
     return 0
 
 

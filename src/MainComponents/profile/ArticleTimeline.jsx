@@ -1,14 +1,21 @@
 import React from 'react'
-import LikeButton from './LikeButton'
+import LikeButton from '../likes/LikeButton'
 
 export default function ArticleTimeline(props) {
 
 const StoryBoards = (props) => {
     const {menu, articles} = props
+
     if(articles.length > 0){
+        
+
         return (
 
             articles.map((articles, index) => {
+            let articleLike = {
+                artTitle : articles.title,
+                artLikes : articles.likes
+            }
                 return(
                     <>
                 <div className="xl:w-1/3 md:w-1/2 p-4">
@@ -21,8 +28,7 @@ const StoryBoards = (props) => {
                         <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font mb-4">Author: {articles.author}</h3>
 
                         <p className="leading-relaxed text-base pb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a urna elementum, tempor leo id, lobortis nisi. Morbi ullamcorper luctus ante, id pellentesque neque tempor sed.</p>
-
-                        <LikeButton likes={articles.likes} /> 
+                        <LikeButton {...articleLike} /> 
                     </div>
                   
                 </div>

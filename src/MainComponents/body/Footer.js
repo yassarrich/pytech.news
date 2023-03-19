@@ -2,13 +2,9 @@ import React from "react"
 
 export default function Footer() {
     return(
-      <footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600 ">
+      <footer className="bg-gradient-to-r from-blue-500 to-purple-500 text-center text-white dark:bg-neutral-600 ">
         <div className="container p-6 text-neutral-800 dark:text-neutral-200">
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="">
-                <p>Hello!</p>
-              </div>
-            </div>
+            
           </div>
       <div className="container">
         <div className="mb-9 flex justify-center">
@@ -36,7 +32,7 @@ export default function Footer() {
       </div>
     
       <div
-        className="bg-neutral-300 p-4 text-right text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">    
+        className="bg-white p-4 text-right text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">    
         © 2023 Copyright:
         <a
           className="text-neutral-800 dark:text-neutral-400"
@@ -47,5 +43,5 @@ export default function Footer() {
   
     </footer>
 
-    )
+)
 }
