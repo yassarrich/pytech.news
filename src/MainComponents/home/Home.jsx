@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios';
-import HomeTimeline from './HomeTimeline.js';
+import HomeTimeline from './HomeTimeline.jsx';
 import HomeNav from './HomeNav.jsx';
 
 

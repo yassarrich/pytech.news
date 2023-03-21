@@ -5,8 +5,6 @@ import ArticleTimeline from './ArticleTimeline.jsx';
 import axios from 'axios';
 import ProfileHeader from './ProfileHeader.jsx';
 import Likes from '../likes/Likes.jsx'
-import LikeButton from '../likes/LikeButton.jsx';
-import Home from '../home/Home.jsx';
 
 const ProfileHome = () => {
 
@@ -29,8 +27,6 @@ const ProfileHome = () => {
 
   return (
     <>
-        
-
     <ProfileHeader/>
     <Routes>
           <Route path="/likedPost" element={<Likes />}/>
@@ -53,7 +49,7 @@ const ProfileHome = () => {
           </div>
         ) : (
           <>
-            <div class="flex flex-wrap -m-4">
+            <div className="flex flex-wrap -m-4">
             <ArticleTimeline articles={articles}/>
             </div>
           </>

@@ -1,11 +1,11 @@
 import React from 'react'
+import HomeLikeButton from '../likes/HomeLikeButton';
 
 export default function HomeTimeline(props) {
 
 const StoryBoards = (props) => {
     const {menu, articles} = props;
     var temp = articles.slice(0,3);
-    console.log("check");
     if(temp.length > 0){
         return (
             
@@ -23,6 +23,9 @@ const StoryBoards = (props) => {
                         <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font mb-4">Author: {articles.author}</h3>
 
                         <p className="leading-relaxed text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a urna elementum, tempor leo id, lobortis nisi. Morbi ullamcorper luctus ante, id pellentesque neque tempor sed.</p>
+                    <a href='http://127.0.0.1:5000/login'>
+                        <HomeLikeButton /> 
+                    </a>
                     </div>
                 </div>
                  </>

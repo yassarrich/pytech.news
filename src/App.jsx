@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import ProfileHome from './MainComponents/profile/ProfileHome.jsx'
-import Footer from './MainComponents/body/Footer.js'
+import Footer from './MainComponents/body/Footer.jsx'
 import Home from "./MainComponents/home/Home.jsx" 
 import Likes from "./MainComponents/likes/Likes.jsx"
 

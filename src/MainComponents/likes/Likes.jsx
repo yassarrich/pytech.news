@@ -48,7 +48,7 @@ const LikesHome = () => {
           </div>
         ) : (
           <>
-            <div class="flex flex-wrap -m-4">
+            <div className="flex flex-wrap -m-4">
             <LikesTimeline articles={articles}/>
             </div>
           </>
