@@ -12,7 +12,7 @@ const Home = () => {
   let profileData = []
   
   const [articles, getArticles] = useState([]);
-  const baseUrl = 'http://127.0.0.1:5000/data';
+  const baseUrl = 'http://167.71.28.239:3000/data';
 
   useEffect(() => {
     getAllArticles();
