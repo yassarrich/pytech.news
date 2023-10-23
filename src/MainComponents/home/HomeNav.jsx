@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Login', href: 'http://127.0.0.1:5000/login', current: false },
+    { name: 'Login', href: '/login', current: false },
     
   ]
   

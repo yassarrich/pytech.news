@@ -4,6 +4,7 @@ import ProfileHome from './MainComponents/profile/ProfileHome.jsx'
 import Footer from './MainComponents/body/Footer.jsx'
 import Home from "./MainComponents/home/Home.jsx" 
 import Likes from "./MainComponents/likes/Likes.jsx"
+import Login from "./MainComponents/login/Login.jsx"
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home /> } />
+          <Route path="/login" element={<Login />}/>
           <Route path="/account/*" element={<ProfileHome />}/>
           <Route path="/likedPost" element={<Likes />}/>
         </Routes>
